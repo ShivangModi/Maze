@@ -250,8 +250,8 @@ class MazeProblem:
     def __init__(self, length=10, breadth=10):
         self.__m = maze()
         # self.__m.CreateMaze()
-        # self.__m.CreateMaze(loopPercent=100)
-        self.__m.CreateMaze(loadMaze='./maze--2023-01-14--00-30-10.csv')
+        self.__m.CreateMaze(loopPercent=100)
+        # self.__m.CreateMaze(loadMaze='./maze--2023-01-14--00-30-10.csv')
 
         self.__goal = (1, 1)
         self.__start = (self.__m.rows, self.__m.cols)
@@ -260,28 +260,28 @@ class MazeProblem:
         path, close = None, None
         sa = SearchingAlgorithm(self.__m, self.__start, self.__goal)
 
-        # match int(input("Enter number from above algorithm respectively: ")):
-        #     case 1:  # DFS algorithm
-        #         path, close = sa.DFS()
-        #         textLabel(self.__m, 'Depth-First Search (DFS)', "")
-        #     case 2:  # BFS algorithm
-        #         path, close = sa.BFS()
-        #         textLabel(self.__m, 'Breadth-First Search (BFS)', "")
-        #     case 3:  # A* algorithm
-        #         path, close = sa.AStar()
-        #         textLabel(self.__m, 'A* using Manhattan distance', "")
-        #     case 4:  # Dijkstra algorithm
-        #         path, close = sa.Dijkstra()
-        #         textLabel(self.__m, 'Dijkstra Algorithm', "")
-        #     case 5:  # Random Walk Algorithm
-        #         path, close = sa.RandomWalk()
-        #         textLabel(self.__m, 'Random Walk Algorithm', "")
-        #     case 6:  # Stochastic A* algorithm
-        #         path, close = sa.S_AStar()
-        #         textLabel(self.__m, 'Stochastic A* using Manhattan distance', "")
+        match int(input("Enter number from above algorithm respectively: ")):
+            case 1:  # DFS algorithm
+                path, close = sa.DFS()
+                textLabel(self.__m, 'Depth-First Search (DFS)', "")
+            case 2:  # BFS algorithm
+                path, close = sa.BFS()
+                textLabel(self.__m, 'Breadth-First Search (BFS)', "")
+            case 3:  # A* algorithm
+                path, close = sa.AStar()
+                textLabel(self.__m, 'A* using Manhattan distance', "")
+            case 4:  # Dijkstra algorithm
+                path, close = sa.Dijkstra()
+                textLabel(self.__m, 'Dijkstra Algorithm', "")
+            case 5:  # Random Walk Algorithm
+                path, close = sa.RandomWalk()
+                textLabel(self.__m, 'Random Walk Algorithm', "")
+            case 6:  # Stochastic A* algorithm
+                path, close = sa.S_AStar()
+                textLabel(self.__m, 'Stochastic A* using Manhattan distance', "")
 
-        path, close = sa.AStar()
-        textLabel(self.__m, 'Stochastic A* using Manhattan distance', "")
+        # path, close = sa.RandomWalk()
+        # textLabel(self.__m, 'Random Walk Algorithm', "")
 
         a = agent(self.__m, filled=True, footprints=True, color=COLOR.yellow)
         self.__m.tracePath({a: close}, delay=100)
@@ -295,24 +295,24 @@ class MazeProblem:
 
 
 def main():
-    # print("\n------------------------------------------------------------------------------------\n")
-    # print("                                    Maze Problem                                    ")
-    # print("\n------------------------------------------------------------------------------------\n")
-    #
-    # l, b = map(int, input("Enter Maze length and breadth: ").split())
-    # m = MazeProblem(l, b)
-    #
-    # print("\n------------------------------------------------------------------------------------\n")
-    # print("Here, we can solve Maze problem using following algorithm:")
-    # print("1. Depth-First Search (DFS)")
-    # print("2. Breadth-First Search (BFS)")
-    # print("3. A* Star using Manhattan distance")
-    # print("4. Dijkstra Algorithm")
-    # print("5. Random Walk Algorithm")
-    # print("6. Stochastic A* Star using Manhattan distance")
-    # print("\n------------------------------------------------------------------------------------\n")
+    print("\n------------------------------------------------------------------------------------\n")
+    print("                                    Maze Problem                                    ")
+    print("\n------------------------------------------------------------------------------------\n")
 
-    m = MazeProblem()
+    l, b = map(int, input("Enter Maze length and breadth: ").split())
+    m = MazeProblem(l, b)
+
+    print("\n------------------------------------------------------------------------------------\n")
+    print("Here, we can solve Maze problem using following algorithm:")
+    print("1. Depth-First Search (DFS)")
+    print("2. Breadth-First Search (BFS)")
+    print("3. A* Star using Manhattan distance")
+    print("4. Dijkstra Algorithm")
+    print("5. Random Walk Algorithm")
+    print("6. Stochastic A* Star using Manhattan distance")
+    print("\n------------------------------------------------------------------------------------\n")
+
+    # m = MazeProblem()
     m.solve()
 
 
